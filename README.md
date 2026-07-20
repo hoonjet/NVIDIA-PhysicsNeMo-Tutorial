@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository provides tutorials for solving various physics simulation problems using the NVIDIA PhysicsNeMo framework. Each tutorial includes a Python script, detailed guides (Korean/English), and result images.
+This repository provides tutorials for solving various physics simulation problems using the NVIDIA PhysicsNeMo framework. Each tutorial includes a Python script, detailed guides, and result images.
 
 ---
 
