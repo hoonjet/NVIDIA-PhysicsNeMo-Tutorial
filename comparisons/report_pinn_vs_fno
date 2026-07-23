@@ -1,0 +1,37 @@
+# PINN vs FNO Comparison Report
+
+## Overview
+This report compares two fundamentally different approaches to solving the same PDE (1D Viscous Burgers Equation): **PINN** (equation-based) vs **FNO** (data-driven).
+
+## Problem
+```
+u_t + u * u_x = (nu / pi) * u_xx
+```
+- Domain: x ∈ [-1, 1], t ∈ [0, 1]
+- BC: u(-1, t) = u(1, t) = 0
+- IC: u(x, 0) = -sin(πx)
+
+## Quantitative Results
+
+| Metric | PINN | FNO |
+|--------|------|-----|
+| Approach | Equation-based | Data-driven |
+| Training data | None | 50 samples × 21 steps |
+| Parameters | 12,737 | 41,441 |
+| Epochs | 5,000 | 300 |
+| Training time | 72.2s | 2,182.6s |
+| Final loss | 8.07×10⁻⁴ | 5.96×10⁻² |
+| Time per epoch | 0.014s | 7.28s |
+
+## Key Takeaways
+1. **PINN needs NO data** but trains slower per epoch (autograd overhead)
+2. **FNO needs labeled data** but achieves fast inference after training
+3. **PINN gives continuous solution** (evaluate at any point in domain)
+4. **FNO gives discrete solution** (fixed grid resolution)
+5. **PINN is better for**: inverse problems, unknown PDEs, sparse data
+6. **FNO is better for**: fast inference, many forward solves, parametric studies
+
+## Output Files
+- `results/pinn_vs_fno_loss.png` — Training loss comparison
+- `results/pinn_vs_fno_result.png` — Solution comparison at different times
+- `results/pinn_vs_fno_summary.png` — Quantitative bar chart comparison
