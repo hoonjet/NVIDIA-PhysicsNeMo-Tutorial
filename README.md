@@ -136,15 +136,8 @@ tutorial_name/
 ### Adding a New Tutorial
 
 1. Create a new subfolder under the appropriate group folder
-2. Place the script, `guide_en.md`, and `guide_ko.md`
-3. Save result images in a `results/` subfolder
-
----
-
-## Language Support
-
-- 🇰🇷 **Korean**: `guide_ko.md` / `*_ko.md`
-- 🇺🇸 **English**: `guide_en.md` / `*_en.md`
+2. Place the script, `guide.md'
+3. Save result images in a `results/` subfolder (not provided)
 
 ---
 
