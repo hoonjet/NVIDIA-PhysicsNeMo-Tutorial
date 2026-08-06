@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository provides tutorials for solving various physics simulation problems using the NVIDIA PhysicsNeMo framework. Each tutorial includes a Python script, detailed guides, and result images.
+This repository provides tutorials for solving various physics simulation problems using the NVIDIA PhysicsNeMo framework. Each tutorial includes a Python script, detailed guides (Korean/English), and result images.
 
 ---
 
@@ -21,6 +21,9 @@ physicsnemo-tutorials/
 ├── mesh_based/            # Mesh-based learning (MeshGraphNet, NACA Airfoil) tutorials
 ├── applications/          # Application domains (topology optimization, etc.)
 ├── comparisons/           # Multi-model performance comparisons
+├── generative/            # Generative AI for physics (conditional diffusion)
+├── optimization/          # AI-based design optimization (inverse design)
+├── uncertainty/           # Uncertainty quantification (deep ensemble, OOD detection)
 └── utils/                 # Utility scripts
 ```
 
@@ -40,6 +43,8 @@ Equation-based learning — trains without labeled data using PDE residual loss
 | [Electrostatics](pinn/electrostatics/) | Electrostatics (Poisson equation) | `pinn_electrostatics.py` |
 | [Plane Stress](pinn/plane_stress/) | Plane stress (linear elasticity) | `pinn_planestress.py` |
 | [Inverse Problem](pinn/inverse_problem/) | Inverse problem (parameter estimation) | `inverse_pinn.py` |
+| [Adaptive Sampling (RAR)](pinn/adaptive_sampling/) | Adaptive collocation (RAR, 2D Poisson) | `adaptive_sampling.py` |
+| [Reaction-Diffusion](pinn/reaction_diffusion/) | Gray-Scott (multi-variable coupled PDE) | `reaction_diffusion.py` |
 
 ### Neural Operators
 
@@ -54,6 +59,7 @@ Data-driven learning — surrogate models that approximate PDE solutions via sup
 | [Transolver - Darcy Flow](neural_operators/transolver/) | Physics Attention (Darcy) | `transolver_darcy.py` |
 | [U-Net - Darcy Flow](neural_operators/unet/) | 3D CNN Encoder-Decoder (Darcy) | `unet_darcy.py` |
 | [SRRN - Super Resolution](neural_operators/srrn/) | Low-res → high-res upscaling | `srrn_superres.py` |
+| [DeepONet - Burgers](neural_operators/deeponet/) | Operator learning (branch-trunk) | `deeponet_burgers.py` |
 
 ### Mesh-Based Learning
 
@@ -80,6 +86,30 @@ Multi-model performance comparison
 |--------|-----------------|--------|
 | [Darcy Flow Model Comparison](comparisons/report_en.md) | FNO vs Transolver vs U-Net | `compare_darcy_models.py` |
 | [PINN vs FNO Comparison](comparisons/report_pinn_vs_fno_en.md) | PINN vs FNO (Burgers) | `compare_pinn_vs_fno.py` |
+
+### Generative AI
+
+Generative modeling — learn solution distributions and generate diverse samples
+
+| Tutorial | Description | Script |
+|----------|-------------|--------|
+| [Conditional Diffusion](generative/conditional_diffusion/) | DDPM for stochastic Darcy (1→N generation) | `conditional_diffusion.py` |
+
+### Optimization
+
+AI-based inverse design — optimize inputs to achieve desired performance
+
+| Tutorial | Description | Script |
+|----------|-------------|--------|
+| [Differentiable Design](optimization/differentiable_design/) | Surrogate backprop for airfoil shape design | `differentiable_design.py` |
+
+### Uncertainty Quantification
+
+Know when the model is wrong — safety-critical ML for physics
+
+| Tutorial | Description | Script |
+|----------|-------------|--------|
+| [Deep Ensemble](uncertainty/deep_ensemble/) | N=5 CNNs, OOD detection, calibration | `deep_ensemble.py` |
 
 ---
 
@@ -136,10 +166,11 @@ tutorial_name/
 ### Adding a New Tutorial
 
 1. Create a new subfolder under the appropriate group folder
-2. Place the script, `guide.md'
-3. Save result images in a `results/` subfolder (not provided)
+2. Place the script, `guide_en.md`, and `guide_ko.md`
+3. Save result images in a `results/` subfolder
 
 ---
+
 
 ## Environment
 
@@ -152,4 +183,4 @@ tutorial_name/
 | PhysicsNeMo | 1.3.0 |
 | NVIDIA Driver | 582.70 |
 
----
+
