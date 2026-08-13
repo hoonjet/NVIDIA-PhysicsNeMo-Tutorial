@@ -496,21 +496,53 @@ total = 5.0 * loss_pde + loss_bc    # Increase PDE weight
 
 ## 8. Next Learning Steps
 
+The PhysicsNeMo Tutorials repository contains **6 categories** covering different ML paradigms for physics simulation. After completing this PINN tutorial, explore the other categories in the following order:
+
 ### Step 1: Deepen Current Tutorial (1-2 days)
 - [ ] Increase EPOCHS to 10000 and check accuracy improvement
 - [ ] Change NU to experiment with different Reynolds numbers
 - [ ] Change network size (layer_size, num_layers)
 - [ ] Add learning rate scheduler
 
-### Step 2: Try Other PDE Problems (3-5 days)
-- [ ] **Darcy Flow**: Simpler equation to establish PINN fundamentals
-- [ ] **Helmholtz equation**: Wave-related problem
-- [ ] **Heat transfer equation**: Temperature distribution prediction
+### Step 2: Try Other PINN Problems (3-5 days)
+- [ ] **Burgers Equation** (`pinn/burgers/`): 1D shock wave (classic PINN benchmark)
+- [ ] **Electrostatics** (`pinn/electrostatics/`): Poisson equation (simplest PDE)
+- [ ] **Adaptive Sampling** (`pinn/adaptive_sampling/`): Advanced training technique (RAR)
+- [ ] **Reaction-Diffusion** (`pinn/reaction_diffusion/`): Multi-variable coupled PDE (Gray-Scott)
 
-### Step 3: PhysicsNeMo Advanced Features (1 week)
-- [ ] **FNO (Fourier Neural Operator)**: Data-driven learning
-- [ ] **Model save/load**: Reuse trained models
-- [ ] **ONNX export**: Inference optimization
+### Step 3: Neural Operators — Data-Driven Learning (1 week)
+- [ ] **FNO - Darcy Flow** (`neural_operators/fno/darcy_flow/`): Fourier Neural Operator (fastest, most accurate)
+- [ ] **U-Net - Darcy Flow** (`neural_operators/unet/`): CNN-based (intuitive structure)
+- [ ] **DeepONet - Burgers** (`neural_operators/deeponet/`): Operator learning (branch-trunk architecture)
+- [ ] **SRRN - Super Resolution** (`neural_operators/srrn/`): Low-res → high-res upscaling
+
+### Step 4: Generative AI — Solution Distribution Learning (1 week)
+- [ ] **Conditional Diffusion** (`generative/conditional_diffusion/`): DDPM for stochastic Darcy Flow
+  - **Key difference**: All previous tutorials are deterministic (1 input → 1 output). This is the ONLY tutorial that generates MULTIPLE plausible solutions from one input.
+  - **Learn**: Forward/reverse diffusion, score matching, stochastic PDEs, solution uncertainty
+
+### Step 5: Optimization — Inverse Design (1 week)
+- [ ] **Differentiable Design** (`optimization/differentiable_design/`): Surrogate backprop for airfoil shape design
+  - **Key difference**: All previous tutorials solve forward problems (input → output). This is the ONLY tutorial that solves the INVERSE design problem (desired output → optimize input).
+  - **Learn**: Input-space gradient descent, surrogate-based optimization, multi-objective loss, projected gradient
+
+### Step 6: Uncertainty Quantification — Safety-Critical ML (1 week)
+- [ ] **Deep Ensemble** (`uncertainty/deep_ensemble/`): N=5 independent CNNs for UQ
+  - **Key difference**: All previous tutorials report point estimates. This is the ONLY tutorial that answers "WHEN does the model make mistakes?"
+  - **Learn**: Epistemic uncertainty, OOD detection, calibration, ensemble averaging, safety-critical ML
+
+### Category Summary
+
+| Category | Paradigm | Key Question | Tutorials |
+|----------|----------|-------------|-----------|
+| `pinn/` | Equation-based | "Can we solve PDEs without data?" | 8 |
+| `neural_operators/` | Data-driven (deterministic) | "Can we learn PDE solutions from data?" | 8 |
+| `mesh_based/` | Graph neural networks | "Can we handle irregular meshes?" | 2 |
+| `applications/` | Domain-specific | "Can we solve real engineering problems?" | 1 |
+| `generative/` | Generative AI | "What is the DISTRIBUTION of solutions?" | 1 |
+| `optimization/` | Inverse design | "What INPUT achieves desired OUTPUT?" | 1 |
+| `uncertainty/` | Uncertainty quantification | "WHEN is the model wrong?" | 1 |
+| `comparisons/` | Multi-model | "Which model is best?" | 2 |
 
 ### Recommended Learning Resources
 
@@ -519,6 +551,8 @@ total = 5.0 * loss_pde + loss_bc    # Increase PDE weight
 | PhysicsNeMo Official Docs | https://nvidia.github.io/PhysicsNeMo/ | API reference |
 | PhysicsNeMo GitHub | https://github.com/NVIDIA/physicsnemo | Example code |
 | PINN Original Paper | https://arxiv.org/abs/1711.10561 | Theoretical background |
+| DDPM Paper | https://arxiv.org/abs/2006.11239 | Diffusion models |
+| Deep Ensembles Paper | https://arxiv.org/abs/1612.01474 | Uncertainty estimation |
 | PyTorch Autograd Tutorial | https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html | Automatic differentiation basics |
 
 ---
