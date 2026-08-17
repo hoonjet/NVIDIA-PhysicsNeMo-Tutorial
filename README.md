@@ -24,6 +24,7 @@ physicsnemo-tutorials/
 ├── generative/            # Generative AI for physics (conditional diffusion)
 ├── optimization/          # AI-based design optimization (inverse design)
 ├── uncertainty/           # Uncertainty quantification (deep ensemble, OOD detection)
+├── transfer_learning/     # Transfer learning (pre-train → fine-tune)
 └── utils/                 # Utility scripts
 ```
 
@@ -55,11 +56,15 @@ Data-driven learning — surrogate models that approximate PDE solutions via sup
 | [FNO - Darcy Flow](neural_operators/fno/darcy_flow/) | Permeability → pressure prediction | `fno_darcy.py` |
 | [FNO - Navier-Stokes](neural_operators/fno/navier_stokes/) | Time-dependent flow (vorticity) | `fno_navier_stokes.py` |
 | [FNO - Heat Conduction](neural_operators/fno/heat_conduction/) | Heat conduction solution | `fno_heatconduction.py` |
+| [FNO - Allen-Cahn](neural_operators/fno/allen_cahn/) | Phase separation (FNO paper benchmark) | `allen_cahn.py` |
+| [FNO - Wave Equation](neural_operators/fno/wave/) | 2D wave propagation (2nd-order time) | `wave.py` |
 | [AFNO - Darcy Flow](neural_operators/afno/) | Adaptive FNO (Darcy) | `afno_darcy.py` |
 | [Transolver - Darcy Flow](neural_operators/transolver/) | Physics Attention (Darcy) | `transolver_darcy.py` |
 | [U-Net - Darcy Flow](neural_operators/unet/) | 3D CNN Encoder-Decoder (Darcy) | `unet_darcy.py` |
 | [SRRN - Super Resolution](neural_operators/srrn/) | Low-res → high-res upscaling | `srrn_superres.py` |
 | [DeepONet - Burgers](neural_operators/deeponet/) | Operator learning (branch-trunk) | `deeponet_burgers.py` |
+| [PINO - Darcy Flow](neural_operators/pino/) | FNO + PDE residual (hybrid data + physics) | `pino_darcy.py` |
+| [FNO - Zero-Shot Resolution](neural_operators/fno/zero_shot/) | Train 32×32, test 64/128 (no retrain) | `zero_shot.py` |
 
 ### Mesh-Based Learning
 
@@ -110,6 +115,14 @@ Know when the model is wrong — safety-critical ML for physics
 | Tutorial | Description | Script |
 |----------|-------------|--------|
 | [Deep Ensemble](uncertainty/deep_ensemble/) | N=5 CNNs, OOD detection, calibration | `deep_ensemble.py` |
+
+### Transfer Learning
+
+Pre-train on abundant source data, fine-tune on scarce target data — the most practical ML technique
+
+| Tutorial | Description | Script |
+|----------|-------------|--------|
+| [FNO Transfer Learning](transfer_learning/transfer_fno/) | Pre-train (coarse k) → fine-tune (fine k): freeze vs full FT | `transfer_fno.py` |
 
 ---
 
@@ -171,6 +184,11 @@ tutorial_name/
 
 ---
 
+## Language Support
+
+- 🇺🇸 **English**: `guide_en.md` / `*_en.md`
+
+---
 
 ## Environment
 
@@ -183,4 +201,4 @@ tutorial_name/
 | PhysicsNeMo | 1.3.0 |
 | NVIDIA Driver | 582.70 |
 
-
+---
