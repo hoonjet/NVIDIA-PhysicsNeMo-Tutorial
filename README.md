@@ -186,7 +186,7 @@ tutorial_name/
 
 ## Language Support
 
-- 🇺🇸 **English**: `guide_en.md` / `*_en.md`
+- 🇺🇸 **English**
 
 ---
 
