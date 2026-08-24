@@ -15,6 +15,7 @@ Generative AI tutorials go beyond deterministic prediction. Instead of learning 
 | # | Tutorial | Method | Script |
 |---|----------|--------|--------|
 | 1 | [Conditional Diffusion](conditional_diffusion/) | DDPM (200-step reverse diffusion) | `conditional_diffusion.py` |
+| 2 | [Score-Based (SDE)](score_based/) | Continuous SDE (score matching, reverse SDE + prob. flow ODE) | `score_based.py` |
 
 ---
 
