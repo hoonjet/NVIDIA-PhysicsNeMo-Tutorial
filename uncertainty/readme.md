@@ -15,6 +15,7 @@ Uncertainty Quantification (UQ) tutorials answer the question: **"WHEN does the 
 | # | Tutorial | Method | Script |
 |---|----------|--------|--------|
 | 1 | [Deep Ensemble](deep_ensemble/) | N=5 independent CNNs, ensemble std | `deep_ensemble.py` |
+| 2 | [MC Dropout](mc_dropout/) | 1 CNN with dropout, T=50 stochastic passes | `mc_dropout.py` |
 
 ---
 
