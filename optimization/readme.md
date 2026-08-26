@@ -15,6 +15,7 @@ Optimization tutorials solve the **inverse design problem**: given a desired out
 | # | Tutorial | Method | Script |
 |---|----------|--------|--------|
 | 1 | [Differentiable Design](differentiable_design/) | Surrogate backprop (input gradient) | `differentiable_design.py` |
+| 2 | [Multi-Objective Pareto](multi_objective/) | Weighted sum + Pareto front exploration | `multi_objective.py` |
 
 ---
 
