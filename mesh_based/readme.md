@@ -6,34 +6,38 @@
 
 ## Overview
 
-This folder contains tutorials for learning on irregular meshes and complex geometries. Unlike grid-based methods (FNO, U-Net), these approaches handle unstructured meshes commonly used in industrial CFD/FEA simulations.
+Mesh-based learning directly handles **irregular meshes** (CFD grids, FEM meshes) rather than regular grids. It can process complex geometries used in real industrial simulations.
 
 ---
 
 ## Tutorials
 
-| # | Tutorial | Description | Script |
-|---|----------|-------------|--------|
-| 1 | [MeshGraphNet](meshgraphnet/) | Graph neural network for mesh-based learning | `meshgraphnet.py` |
+| # | Tutorial | Key Mechanism | Script |
+|---|----------|---------------|--------|
+| 1 | [MeshGraphNet](meshgraphnet/) | Graph neural network (message passing) | `meshgraphnet.py` |
 | 2 | [NACA Airfoil](naca_airfoil/) | Aerodynamic analysis (flow field prediction) | `naca_airfoil.py` |
+| 3 | [GNN Beam](gnn_beam/) | Structural analysis on FEM mesh (load → displacement) | `gnn_beam.py` |
+| 4 | [GNN Rollout](gnn_rollout/) | Multi-step time evolution (auto-regressive rollout) | `gnn_rollout.py` |
+| 5 | [SPH GNN](sph_gnn/) | Lagrangian particle simulation (dam-break, dynamic graph) | `sph_gnn.py` |
 
 ---
 
 ## Recommended Learning Order
 
-1. **MeshGraphNet** — Graph neural network basics (mesh → graph conversion, message passing)
-2. **NACA Airfoil** — Applied aerodynamics (airfoil geometry → flow field)
+1. **MeshGraphNet** — Graph neural network basics (mesh structure learning)
+2. **NACA Airfoil** — Applied aerodynamics (flow field prediction)
+3. **GNN Beam** — Structural analysis on FEM mesh (load → displacement, Euler-Bernoulli validation)
+4. **GNN Rollout** — Time evolution with error accumulation (1-step → N-step rollout)
 
 ---
 
 ## Key Features
 
-| Feature | MeshGraphNet | NACA Airfoil |
-|---------|-------------|-------------|
-| **Input** | Mesh graph | Airfoil coordinates |
-| **Output** | Node features (velocity, pressure) | Flow field (u, v, p) |
-| **Architecture** | Message Passing GNN | MLP + feature transform |
-| **Irregular mesh** | ✓ | ✓ |
-| **Resolution independence** | ✓ | ✓ |
-| **Training data** | Required (mesh + labels) | Required (geometry + flow) |
-| **Inference speed** | Fast (after training) | Fast (after training) |
+| Feature | Description |
+|---------|-------------|
+| **Data structure** | Graph (nodes + edges) |
+| **Core mechanism** | Message passing (aggregate neighbor node info) |
+| **Irregular mesh** | ✓ (area FNO cannot handle) |
+| **Complex geometry** | ✓ (real CFD/FEM meshes) |
+| **Resolution flexibility** | ✓ (variable node count) |
+| **Multi-scale** | Hop-based |
