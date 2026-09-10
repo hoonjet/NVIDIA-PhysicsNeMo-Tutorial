@@ -1,12 +1,12 @@
-# Application Tutorials
+# Applications Tutorials
 
-> Specific application domains — real-world engineering problems
+> Specific application domains — design optimization and industrial applications
 
 ---
 
 ## Overview
 
-This folder contains tutorials for specific application domains such as structural optimization, design exploration, and other engineering problems that go beyond standard PDE solving.
+This folder contains tutorials applying PhysicsNeMo to specific industrial application domains. It covers using AI for real design/optimization problems beyond basic model training.
 
 ---
 
@@ -14,18 +14,17 @@ This folder contains tutorials for specific application domains such as structur
 
 | # | Tutorial | Description | Script |
 |---|----------|-------------|--------|
-| 1 | [Topology Optimization](topology_optimization/) | Topology optimization using diffusion-based generative model | `topodiff.py` |
+| 1 | [Topology Optimization](topology_optimization/) | Topology optimization (Diffusion-based) | `topodiff.py` |
 | 2 | [Active Learning](active_learning/) | Uncertainty-based selective sampling for efficient surrogate training | `active_learning.py` |
+| 3 | [ROM Autoencoder](rom_autoencoder/) | Compress 4096-dim field → 8-dim latent (512× compression, PCA mode discovery) | `rom_autoencoder.py` |
 
 ---
 
 ## Key Features
 
-| Feature | Topology Optimization |
-|---------|----------------------|
-| **Problem** | Optimize material distribution under constraints |
-| **Method** | Diffusion model (generative AI) |
-| **Input** | Boundary conditions + loads |
-| **Output** | Optimal material distribution |
-| **Training data** | Required (optimized solutions from FEM) |
-| **Inference** | Fast (generates design in seconds) |
+| Feature | Description |
+|---------|-------------|
+| **Application area** | Design optimization, inverse design |
+| **Learning method** | Data-driven (supervised learning) |
+| **Core mechanism** | Diffusion model |
+| **Input/Output** | Boundary conditions → optimal shape |
