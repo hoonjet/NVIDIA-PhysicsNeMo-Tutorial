@@ -22,6 +22,10 @@ PINN injects physical laws (PDEs) directly into the neural network loss function
 | 6 | [Inverse Problem](inverse_problem/) | Inverse problem (parameter estimation) | `inverse_pinn.py` |
 | 7 | [Adaptive Sampling (RAR)](adaptive_sampling/) | Adaptive collocation (2D Poisson) | `adaptive_sampling.py` |
 | 8 | [Reaction-Diffusion](reaction_diffusion/) | Gray-Scott (multi-variable coupled PDE) | `reaction_diffusion.py` |
+| 9 | [Lattice Boltzmann (LBM)](lbm/) | Boltzmann BGK (D2Q9, mesoscopic/kinetic) | `lbm.py` |
+| 10 | [Helmholtz (Acoustic Scattering)](helmholtz/) | Complex field, Sommerfeld BC, frequency-domain | `helmholtz.py` |
+| 11 | [Maxwell (EM Wave)](maxwell/) | Vector field (E,H), dielectric interface, time-domain | `maxwell.py` |
+| 12 | [Multi-Fidelity PINN](multi_fidelity/) | Low-fid + correction net, multi-resolution data fusion | `multi_fidelity.py` |
 
 ---
 
@@ -35,6 +39,7 @@ PINN injects physical laws (PDEs) directly into the neural network loss function
 6. **Inverse Problem** — Inverse problem (forward → inverse)
 7. **Adaptive Sampling (RAR)** — Advanced technique (adaptive collocation, transferable skill)
 8. **Reaction-Diffusion** — Multi-variable coupled PDE (Gray-Scott, Turing patterns)
+9. **Lattice Boltzmann (LBM)** — Mesoscopic/kinetic approach (Boltzmann BGK, D2Q9 lattice)
 
 ---
 
