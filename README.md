@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository provides tutorials for solving various physics simulation problems using the NVIDIA PhysicsNeMo framework. Each tutorial includes a Python script, detailed guides (Korean/English), and result images.
+This repository provides tutorials for solving various physics simulation problems using the NVIDIA PhysicsNeMo framework. Each tutorial includes a Python script, a detailed guide, and result images.
 
 ---
 
@@ -18,7 +18,7 @@ physicsnemo-tutorials/
 ├── docs/                  # Project-level documentation (installation, system inspection, guides)
 ├── pinn/                  # PINN (Physics-Informed Neural Network) tutorials
 ├── neural_operators/      # Neural Operator (FNO, AFNO, Transolver, U-Net, SRRN) tutorials
-├── mesh_based/            # Mesh-based learning (MeshGraphNet, NACA Airfoil) tutorials
+├── mesh_based/            # Mesh-based learning (MeshGraphNet, NACA Airfoil, GNN) tutorials
 ├── applications/          # Application domains (topology optimization, etc.)
 ├── comparisons/           # Multi-model performance comparisons
 ├── generative/            # Generative AI for physics (conditional diffusion)
@@ -46,6 +46,10 @@ Equation-based learning — trains without labeled data using PDE residual loss
 | [Inverse Problem](pinn/inverse_problem/) | Inverse problem (parameter estimation) | `inverse_pinn.py` |
 | [Adaptive Sampling (RAR)](pinn/adaptive_sampling/) | Adaptive collocation (RAR, 2D Poisson) | `adaptive_sampling.py` |
 | [Reaction-Diffusion](pinn/reaction_diffusion/) | Gray-Scott (multi-variable coupled PDE) | `reaction_diffusion.py` |
+| [Lattice Boltzmann (LBM)](pinn/lbm/) | Boltzmann BGK (D2Q9, mesoscopic/kinetic) | `lbm.py` |
+| [Helmholtz (Acoustic Scattering)](pinn/helmholtz/) | Complex field, Sommerfeld BC, frequency-domain | `helmholtz.py` |
+| [Maxwell (EM Wave)](pinn/maxwell/) | Vector field (E,H), dielectric interface, time-domain | `maxwell.py` |
+| [Multi-Fidelity PINN](pinn/multi_fidelity/) | Low-fid + correction net, multi-resolution data fusion | `multi_fidelity.py` |
 
 ### Neural Operators
 
@@ -65,6 +69,7 @@ Data-driven learning — surrogate models that approximate PDE solutions via sup
 | [DeepONet - Burgers](neural_operators/deeponet/) | Operator learning (branch-trunk) | `deeponet_burgers.py` |
 | [PINO - Darcy Flow](neural_operators/pino/) | FNO + PDE residual (hybrid data + physics) | `pino_darcy.py` |
 | [FNO - Zero-Shot Resolution](neural_operators/fno/zero_shot/) | Train 32×32, test 64/128 (no retrain) | `zero_shot.py` |
+| [PI-DeepONet](neural_operators/pi_deeponet/) | DeepONet + PDE residual (less data, physics-constrained) | `pi_deeponet.py` |
 
 ### Mesh-Based Learning
 
@@ -74,6 +79,9 @@ Irregular mesh / complex geometry processing
 |----------|-------------|--------|
 | [MeshGraphNet](mesh_based/meshgraphnet/) | Graph neural network (mesh learning) | `meshgraphnet.py` |
 | [NACA Airfoil](mesh_based/naca_airfoil/) | Aerodynamic analysis (flow prediction) | `naca_airfoil.py` |
+| [GNN Beam](mesh_based/gnn_beam/) | Structural analysis on FEM mesh (load → displacement) | `gnn_beam.py` |
+| [GNN Rollout](mesh_based/gnn_rollout/) | Multi-step time evolution (auto-regressive rollout) | `gnn_rollout.py` |
+| [SPH GNN](mesh_based/sph_gnn/) | Lagrangian particle simulation (dam-break, dynamic graph) | `sph_gnn.py` |
 
 ### Applications
 
@@ -82,6 +90,8 @@ Specific application domains
 | Tutorial | Description | Script |
 |----------|-------------|--------|
 | [Topology Optimization](applications/topology_optimization/) | Topology optimization (Diffusion) | `topodiff.py` |
+| [Active Learning](applications/active_learning/) | Uncertainty-based selective sampling for efficient surrogate training | `active_learning.py` |
+| [ROM Autoencoder](applications/rom_autoencoder/) | Compress 4096-dim field → 8-dim latent (512× compression, PCA mode discovery) | `rom_autoencoder.py` |
 
 ### Comparisons
 
@@ -99,6 +109,7 @@ Generative modeling — learn solution distributions and generate diverse sample
 | Tutorial | Description | Script |
 |----------|-------------|--------|
 | [Conditional Diffusion](generative/conditional_diffusion/) | DDPM for stochastic Darcy (1→N generation) | `conditional_diffusion.py` |
+| [Score-Based (SDE)](generative/score_based/) | Continuous SDE (score matching, reverse SDE + prob. flow ODE) | `score_based.py` |
 
 ### Optimization
 
@@ -107,6 +118,7 @@ AI-based inverse design — optimize inputs to achieve desired performance
 | Tutorial | Description | Script |
 |----------|-------------|--------|
 | [Differentiable Design](optimization/differentiable_design/) | Surrogate backprop for airfoil shape design | `differentiable_design.py` |
+| [Multi-Objective Pareto](optimization/multi_objective/) | Weighted sum + Pareto front exploration (3 objectives) | `multi_objective.py` |
 
 ### Uncertainty Quantification
 
@@ -115,6 +127,7 @@ Know when the model is wrong — safety-critical ML for physics
 | Tutorial | Description | Script |
 |----------|-------------|--------|
 | [Deep Ensemble](uncertainty/deep_ensemble/) | N=5 CNNs, OOD detection, calibration | `deep_ensemble.py` |
+| [MC Dropout](uncertainty/mc_dropout/) | 1 CNN with dropout, T=50 stochastic passes (5x cheaper) | `mc_dropout.py` |
 
 ### Transfer Learning
 
@@ -123,6 +136,7 @@ Pre-train on abundant source data, fine-tune on scarce target data — the most 
 | Tutorial | Description | Script |
 |----------|-------------|--------|
 | [FNO Transfer Learning](transfer_learning/transfer_fno/) | Pre-train (coarse k) → fine-tune (fine k): freeze vs full FT | `transfer_fno.py` |
+| [PINN Transfer Learning](transfer_learning/pinn_transfer/) | Cross-PDE: Burgers → Sine-Gordon (scratch vs freeze vs full FT) | `pinn_transfer.py` |
 
 ---
 
@@ -168,8 +182,7 @@ Each tutorial folder contains the following files:
 ```
 tutorial_name/
 ├── script.py          # Python tutorial script
-├── guide_en.md        # English detailed guide
-├── guide_ko.md        # Korean detailed guide
+├── guide_en.md        # Detailed guide
 └── results/           # Result images and model files
     ├── *_result.png
     ├── *_loss.png
@@ -179,14 +192,8 @@ tutorial_name/
 ### Adding a New Tutorial
 
 1. Create a new subfolder under the appropriate group folder
-2. Place the script, `guide_en.md`, and `guide_ko.md`
+2. Place the script and `guide_en.md`
 3. Save result images in a `results/` subfolder
-
----
-
-## Language Support
-
-- 🇺🇸 **English**
 
 ---
 
@@ -202,3 +209,10 @@ tutorial_name/
 | NVIDIA Driver | 582.70 |
 
 ---
+
+## Documentation
+
+- [Installation Manual](docs/installation_manual_en.md)
+- [System Inspection Report](docs/system_inspection_report_en.md)
+- [Virtual Environment Guide](docs/virtual_environment_guide_en.md)
+- [Tutorial Overview](docs/tutorial_overview_en.md)
