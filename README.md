@@ -50,6 +50,11 @@ Equation-based learning — trains without labeled data using PDE residual loss
 | [Helmholtz (Acoustic Scattering)](pinn/helmholtz/) | Complex field, Sommerfeld BC, frequency-domain | `helmholtz.py` |
 | [Maxwell (EM Wave)](pinn/maxwell/) | Vector field (E,H), dielectric interface, time-domain | `maxwell.py` |
 | [Multi-Fidelity PINN](pinn/multi_fidelity/) | Low-fid + correction net, multi-resolution data fusion | `multi_fidelity.py` |
+| [Advection-Diffusion](pinn/advection_diffusion/) | Advection-diffusion (transport + diffusion) | `advection_diffusion.py` |
+| [Stokes Flow](pinn/stokes_flow/) | Low Reynolds flow (Stokes equation) | `stokes_flow.py` |
+| [Fluid-Structure Interaction](pinn/fsi/) | Fluid + solid coupled PINN (2 models) | `fsi.py` |
+| [Curriculum Learning](pinn/curriculum_learning/) | Progressive difficulty (Re=10→100→1000) | `curriculum_learning.py` |
+| [Bayesian PINN](pinn/bayesian_pinn/) | MC Dropout uncertainty + PDE (physics-aware UQ) | `bayesian_pinn.py` |
 
 ### Neural Operators
 
@@ -138,6 +143,15 @@ Pre-train on abundant source data, fine-tune on scarce target data — the most 
 | [FNO Transfer Learning](transfer_learning/transfer_fno/) | Pre-train (coarse k) → fine-tune (fine k): freeze vs full FT | `transfer_fno.py` |
 | [PINN Transfer Learning](transfer_learning/pinn_transfer/) | Cross-PDE: Burgers → Sine-Gordon (scratch vs freeze vs full FT) | `pinn_transfer.py` |
 
+### Utilities
+
+Practical ML workflow tools — configuration management and checkpoint/resume
+
+| Tutorial | Description | Script |
+|----------|-------------|--------|
+| [Hydra Configuration](utils/hydra_config/) | Config management with Hydra (YAML, CLI override, composition) | `hydra_config.py` |
+| [Checkpoint Management](utils/checkpoint_management/) | Save, resume, and manage training experiments | `checkpoint_management.py` |
+
 ---
 
 ## Quick Start
@@ -151,7 +165,7 @@ Pre-train on abundant source data, fine-tune on scarce target data — the most 
 
 ### Installation
 
-For detailed installation instructions, see [docs/installation_manual_en.md](docs/installation_manual_en.md).
+For detailed installation instructions, see [docs/installation_manual.md](docs/installation_manual.md).
 
 ```cmd
 :: Create and activate virtual environment
@@ -169,7 +183,7 @@ pip install nvidia-physicsnemo
 
 ```cmd
 :: Example: Run FNO Darcy Flow tutorial
-cd E:\physicsnemo-tutorials\neural_operators\fno\darcy_flow
+cd YOUR_DIRECTORY\physicsnemo-tutorials\neural_operators\fno\darcy_flow
 python fno_darcy.py
 ```
 
@@ -212,7 +226,5 @@ tutorial_name/
 
 ## Documentation
 
-- [Installation Manual](docs/installation_manual_en.md)
-- [System Inspection Report](docs/system_inspection_report_en.md)
-- [Virtual Environment Guide](docs/virtual_environment_guide_en.md)
-- [Tutorial Overview](docs/tutorial_overview_en.md)
+- [Installation Manual](docs/installation_manual.md)
+- [Tutorial Overview](docs/tutorial_overview.md)
